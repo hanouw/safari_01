@@ -1,7 +1,7 @@
 from animal import Animal
 
 def print_TODO(todo):
-    print(f'moving to {direction}. <<< NOT IMPLEMENTED YET >>>')
+    print(f'<<< NOT IMPLEMENTED: {todo} >>>')
 
 class CircleOfLife:
     def __init__(self, world_size, num_zebras, num_lions):
@@ -13,8 +13,8 @@ class CircleOfLife:
         self.timestep = 0
         print('Welcom to AIE Safari!')
         print(f'\tworld size = {world_size}')
-        print(f'\number of zebras = {len(self.zeberas)}')
-        print(f'\number of zebras = {len(self.zeberas)}')
+        print(f'\tnumber of zebras = {len(self.zebras)}')
+        print(f'\tnumber of zebras = {len(self.zebras)}')
 
     def display(self):
         print(f'Clock: {self.timestep}')
@@ -45,8 +45,6 @@ class CircleOfLife:
 
 
 
-
-        
 
 
 if __name__ == '__main__':
