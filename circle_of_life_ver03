@@ -74,9 +74,8 @@ class CircleOfLife:
                 print(f' {i}', end=' ')
         print()
 
-        for i, line in enumerate(self.grid):
+        for i, line in enumerate(self.grid): # 열 번호 표시하기
             print('ㅡ' * (self.world_size * 2 + 1))
-            # 열 번호 표시하기
             print(f'{i + 1}|', end='')
             for cell in line:
                 print(f' {cell} |', end='')
@@ -155,7 +154,7 @@ class CircleOfLife:
 
         if direction == 'up':
             y -= 1
-        elif direction == 'down':
+        elif direction == 'down':   
             y += 1
         elif direction == 'left':
             x -= 1
