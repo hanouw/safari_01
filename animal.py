@@ -6,6 +6,7 @@ class Animal:
 
     def move(self, direction):
         print(f'moving to {direction}. <<< NOT IMPLEMENTED YET >>>')
+        self.x += 1#------------------------------예시
 
     def breed(self, x, y):
         return Animal(x,y)

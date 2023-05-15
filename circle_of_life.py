@@ -1,5 +1,6 @@
 from animal import Animal
 
+
 def print_TODO(todo):
     print(f'<<< NOT IMPLEMENTED: {todo} >>>')
 
@@ -16,12 +17,26 @@ class CircleOfLife:
         print(f'\tnumber of zebras = {len(self.zebras)}')
         print(f'\tnumber of zebras = {len(self.zebras)}')
 
+    def __init__(self, world_size, num_zebras, num_lions):
+        for position in world_size:
+            date = 1
+            print(f"  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 time step = {date}")
+            print(num_zebras,num_lions)
+            date += 1
+
+
     def display(self):
         print(f'Clock: {self.timestep}')
         print_TODO('display()')
         key = input('enter [q] to quit:')
         if key == 'q':
             exit()
+        for animal in self.zeras:
+            self.grid[animal.y][animal.x] = 'Z'
+        for animal in self.liones:
+            self.grid[animal.y][animal.x] = 'L'
+        for line in self.grid:
+            print(line)
 
     def step_move(self):
         print_TODO('step_move()')
@@ -45,10 +60,16 @@ class CircleOfLife:
 
 
 
-
-
 if __name__ == '__main__':
     safari = CircleOfLife(5,5,2)
     safari.display()
     safari.step_move()
     safari.step_breed()
+
+
+
+'''
+import os
+os.system('cls')
+# 모든 출력 사항 지우기
+'''
