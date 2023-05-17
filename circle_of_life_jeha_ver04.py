@@ -130,11 +130,30 @@ class CircleOfLife:
         animal.y = new_y
 
         self.grid[animal.y][animal.x] = 'Z' if animal in self.zebras else 'L'  # 새로운 위치로 새로 배정
-        self.occupancy[animal.y][animal.x] = True
+        self.occupancy[animal.y][animal.x] = True   
+
+
+    def get_neighbors(self, grid, target):#-----------------------------------------?????????????????????????????????????????????????????????????????????????????????
+        world_height = len(grid)
+        world_width = len(grid[0])
+        x, y = self.x, self.y
+        neighbors = []
+        neighbors.append([x-1, y])
+        neighbors.append([x+1, y])
+        neighbors.append([x, y-1])
+        neighbors.append([x, y+1])
+        neighbors_valid = [neighbor for neighbor in neighbors
+                           if grid[neighbor[1]][neighbor[0]] == target
+                           and neighbor[0] >= 0
+                           and neighbor[0] < world_width
+                           and neighbor[1] >= 0
+                           and neighbor[1] < world_height]
+
+
 
     def get_lion_direction(self, lion):#------------------000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
         directions = ['up', 'down', 'left', 'right']
-        random.shuffle(directions)
+        random.shuffle(directions)#############################################################################
 
         for direction in directions:
             x, y = self.get_target_coordinates(lion, direction)
@@ -148,7 +167,7 @@ class CircleOfLife:
 
         return None
 
-    def get_target_coordinates(self, animal, direction):
+    def get_target_coordinates(self, animal, direction):#----------------00000000000000000000000000000000000000000000000000000000000000000000000
         x = animal.x
         y = animal.y
 
@@ -219,3 +238,11 @@ class CircleOfLife:
 safari = CircleOfLife()  # Create an instance of CircleOfLife
 
 safari.run_simulation()  # Run the simulation
+
+
+
+
+
+#1. 사자 번식 안함
+#2. 사자가 얼룩말을 잡아먹지 않음
+#3. 
