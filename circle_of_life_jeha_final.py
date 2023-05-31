@@ -1,5 +1,7 @@
 import os
 import random
+from animal import Zebra
+from animal import Lion
 
 class CircleOfLife:
     def __init__(self, world_size, num_zebras, num_lions):
@@ -276,18 +278,7 @@ class CircleOfLife:
                 self.display()
                 print(f'남은 lion 수: {len(self.lions)}, 남은 zebra 수: {len(self.zebras)}')
 
-class Zebra:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.survival_count = 0
 
-class Lion:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.survival_count = 0
-        self.hungry_count = 0
 
 world_size = 20
 num_zebras = 20
