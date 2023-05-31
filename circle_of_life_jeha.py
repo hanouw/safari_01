@@ -1,4 +1,4 @@
-from animal import Animal
+from animal_jeha import Animal
 
 
 def print_TODO(todo):

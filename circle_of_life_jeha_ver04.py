@@ -107,13 +107,13 @@ class CircleOfLife:
                 self.remove_lion(lion)  # 죽은 lion 제거
                 continue
 
-            direction = self.get_lion_direction(lion)
+            direction = self.get_lion_direction(lion)#-------000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
             if direction is not None:
                 x, y = self.get_target_coordinates(lion, direction)
                 target = self.grid[y][x]
 
-                if target == 'Z':  # 사자가 얼룩말 먹음--------------------------------------------ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-----------
+                if target == 'Z':  # 사자가 얼룩말 먹음-----0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
                     self.remove_zebra(x, y)
                 elif target == ' ':  # 사자가 이동
                     self.move_animal(lion, x, y)
@@ -130,11 +130,30 @@ class CircleOfLife:
         animal.y = new_y
 
         self.grid[animal.y][animal.x] = 'Z' if animal in self.zebras else 'L'  # 새로운 위치로 새로 배정
-        self.occupancy[animal.y][animal.x] = True
+        self.occupancy[animal.y][animal.x] = True   
 
-    def get_lion_direction(self, lion):
+
+    def get_neighbors(self, grid, target):#-----------------------------------------?????????????????????????????????????????????????????????????????????????????????
+        world_height = len(grid)
+        world_width = len(grid[0])
+        x, y = self.x, self.y
+        neighbors = []
+        neighbors.append([x-1, y])
+        neighbors.append([x+1, y])
+        neighbors.append([x, y-1])
+        neighbors.append([x, y+1])
+        neighbors_valid = [neighbor for neighbor in neighbors
+                           if grid[neighbor[1]][neighbor[0]] == target
+                           and neighbor[0] >= 0
+                           and neighbor[0] < world_width
+                           and neighbor[1] >= 0
+                           and neighbor[1] < world_height]
+
+
+
+    def get_lion_direction(self, lion):#------------------000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
         directions = ['up', 'down', 'left', 'right']
-        random.shuffle(directions)
+        random.shuffle(directions)#############################################################################
 
         for direction in directions:
             x, y = self.get_target_coordinates(lion, direction)
@@ -148,7 +167,7 @@ class CircleOfLife:
 
         return None
 
-    def get_target_coordinates(self, animal, direction):
+    def get_target_coordinates(self, animal, direction):#----------------00000000000000000000000000000000000000000000000000000000000000000000000
         x = animal.x
         y = animal.y
 
@@ -173,7 +192,7 @@ class CircleOfLife:
 
     def step_breed(self):
         for zebra in self.zebras:
-            zebra.age += 1
+            zebra.age += 1  
 
             if zebra.age >= 3:
                 x, y = self.get_random_empty_coordinates()
@@ -206,17 +225,24 @@ class CircleOfLife:
     def run_simulation(self):
         self.display()
         while True:
-            key = input("Press 'n' to show the next step or 'q' to quit: ")
-            if key == 'n':
-                os.system('cls')
-                self.step()
-                self.display()
-            elif key == 'q':
+            key = input("Press any button to show the next step or 'q' to quit: ")
+            if key == 'q':
                 print("Quitting the simulation.")
                 break
             else:
-                print("Invalid input. Please try again.")
+                os.system('cls')
+                self.step()
+                self.display()
+
 
 safari = CircleOfLife()  # Create an instance of CircleOfLife
 
 safari.run_simulation()  # Run the simulation
+
+
+
+
+
+#1. 사자 번식 안함
+#2. 사자가 얼룩말을 잡아먹지 않음
+#3. 
